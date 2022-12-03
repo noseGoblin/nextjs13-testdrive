@@ -6,12 +6,23 @@ type PageProps = {
   };
 };
 
+type SearchResult = {
+  organic_results: [
+    {
+      position: number;
+      title: string;
+      thumbnail: string;
+      snippet: string;
+    }
+  ];
+};
+
 const search = async (searchTerm: string) => {
   const res = await fetch(
     `http://serpapi.com/search.json?q=${searchTerm}&api_key=${process.env.SERPAPI_KEY}`
   );
 
-  const data = await res.json();
+  const data: SearchResult = await res.json();
   return data;
 };
 
