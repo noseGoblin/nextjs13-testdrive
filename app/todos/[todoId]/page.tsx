@@ -32,3 +32,17 @@ async function TodoPage({ params: { todoId } }: PageProps) {
 }
 
 export default TodoPage;
+
+export async function generateStaticParams() {
+  const res = await fetch('https://jsonplaceholder.typicode.com/todos');
+  const todos: Todo[] = await res.json();
+
+  // limit to first 10 pages to avoid rate limiting by DEMO API
+  const trimmedTodos = todos.splice(0, 10);
+
+  return trimmedTodos.map((todo) => ({
+    todoId: todo.id.toString(),
+  }));
+
+  // [{ todoId: '1}, {todoId: '2'}, ...]
+}
