@@ -22,12 +22,15 @@ const search = async (searchTerm: string) => {
     `http://serpapi.com/search.json?q=${searchTerm}&api_key=${process.env.SERPAPI_KEY}`
   );
 
+  // error trigger below - enable only in PROD build
+  // throw new Error('WHOOPS something broke');
   const data: SearchResult = await res.json();
   return data;
 };
 
 async function SearchResults({ params: { searchTerm } }: PageProps) {
   const searchResults = await search(searchTerm);
+
   return (
     <div>
       <p className='text-gray-500 text-sm'>You searched for: {searchTerm}</p>
