@@ -20,7 +20,10 @@ function Search() {
         placeholder='Enter the Search term'
         onChange={(e) => setSearch(e.target.value)}
       />
-      <button type='submit' className='btn'>
+      <button
+        type='submit'
+        className='bg-blue-500 text-white font-bold py-2 px-4 rounded-lg'
+      >
         Search
       </button>
     </form>
