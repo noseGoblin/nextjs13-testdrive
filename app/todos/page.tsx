@@ -4,9 +4,7 @@ import TodosList from './TodosList';
 function Todos() {
   return (
     <div>
-      <h1>Todo List:</h1>
-      {/* @ts-ignore */}
-      <TodosList />
+      <h1>This is where the Todos will be listed...</h1>
     </div>
   );
 }
